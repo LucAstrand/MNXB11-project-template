@@ -1,15 +1,38 @@
 
 #include <iostream>
+#include <lyra/lyra.hpp>
+#include <string>
 int main(int argc, char *argv[]) {
-  std::cout << "I am just a code template, you need to implement the "
-               "functionality you want to use yourself!"
-            << std::endl;
+  std::string inputFile;
+  bool showHelp = false; // Flag for showing help message
 
-  std::cout << "We were passed " << argc
-            << " command line arguments, the first of which was " << argv[0]
-            << std::endl;
-  std::cout << "With a good CLI library, we could use the command line "
-               "arguments to make a useful program."
-            << std::endl;
+  // Create a command line parser using Lyra
+  auto cli = lyra::cli()
+      | lyra::help(showHelp) // Help command -h
+      | lyra::opt(inputFile, "input_file") // input file -i
+          ["-i"]["--input-file"]("Name of the input CSV file");
+
+  auto responce = cli.parse({argc, argv});
+
+  // Check if the responce is made
+  if (!responce) {
+        std::cerr << "Error: " << responce.message() << std::endl;
+        return 1;
+    }
+  
+  if (showHelp) {
+    std::cout << cli << std::endl;
+    return 0; 
+    }
+
+  // Check if the inputFile is provided
+  if (inputFile.empty()) {
+      std::cerr << "Error: No input file provided. Use -i or --input-file to specify the file." << std::endl;
+      return 1;
+  }
+
+  // Confirms the inputFile
+  std::cout << "Input file: " << inputFile << std::endl;
+
   return 0;
 }

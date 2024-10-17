@@ -2,13 +2,12 @@ CXX := g++
 CXXWARNINGS := -Wall -Wextra -Werror
 CXXOPT := -O3
 CXXSTD := -std=c++17
-INCLUDES := -I include
+INCLUDES := -std=c++17 -O3 -Iinclude -Iexternal/include
 CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES)
-LDFLAGS :=
+LDFLAGS = -Lexternal/lib -Lexternal/lib64 -Lexternal/lyra 
 
 .PHONY: all clean
 
-all: main
 
 # If you add new source files in the src/ directory, remember to add the
 # corresponding object file as a dependency here so that Make knows that it
@@ -16,7 +15,7 @@ all: main
 #
 # Remove the Example object file when you are done looking at it, it doesn't
 # contribute to the executable!
-main: main.cxx src/Example.o
+main: main.cxx
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 src/%.o: src/%.cxx
