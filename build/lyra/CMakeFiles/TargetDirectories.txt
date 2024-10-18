@@ -1,6 +1,0 @@
-/home/ad6224sh/git/MNXB11-project/build/lyra/CMakeFiles/edit_cache.dir
-/home/ad6224sh/git/MNXB11-project/build/lyra/CMakeFiles/rebuild_cache.dir
-/home/ad6224sh/git/MNXB11-project/build/lyra/CMakeFiles/list_install_components.dir
-/home/ad6224sh/git/MNXB11-project/build/lyra/CMakeFiles/install.dir
-/home/ad6224sh/git/MNXB11-project/build/lyra/CMakeFiles/install/local.dir
-/home/ad6224sh/git/MNXB11-project/build/lyra/CMakeFiles/install/strip.dir
