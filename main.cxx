@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 
   // Create a command line parser using Lyra
   auto cli = lyra::cli()
-      | lyra::help(showHelp) // Help command -h
+      | lyra::help(showHelp).description("This program will help you upload and proccess the CSV files.") // Help command -h
       | lyra::opt(inputFile, "input_file") // input file -i
           ["-i"]["--input-file"]("Name of the input CSV file");
 
