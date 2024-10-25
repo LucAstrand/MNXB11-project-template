@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/scan-test.dir/scan-test.cc.o" "CMakeFiles/scan-test.dir/test-main.cc.o" "CMakeFiles/scan-test.dir/gtest-extra.cc.o" "CMakeFiles/scan-test.dir/util.cc.o" "CMakeFiles/scan-test.dir/__/src/os.cc.o" -o ../bin/scan-test  gtest/libgtest.a 

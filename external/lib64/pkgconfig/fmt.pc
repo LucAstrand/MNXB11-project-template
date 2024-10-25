@@ -1,0 +1,11 @@
+prefix=/home/gefloros/git/MNXB11-project-template/external
+exec_prefix=/home/gefloros/git/MNXB11-project-template/external
+libdir=${exec_prefix}/lib64
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 11.0.2
+Libs: -L${libdir} -lfmt
+Cflags: -I${includedir}
+
