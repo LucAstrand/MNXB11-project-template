@@ -1,5 +1,5 @@
 CXX := g++
-CXXWARNINGS := -Wall -Wextra -Werror
+CXXWARNINGS := -Wall -Wextra -Werror -Wno-stringop-truncation
 CXXOPT := -O3
 CXXSTD := -std=c++17
 INCLUDES := -I include -I external/include -I /opt/apps/root/include
