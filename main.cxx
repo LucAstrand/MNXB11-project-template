@@ -1,30 +1,32 @@
 
 #include <iostream>
-#include <string>
-#include <vector>
-#include "csv.h"
-#include "date.h"
-#include "iso_week.h"
+#include <fstream>    // For file input
+#include <string>    // For std::string
+#include <vector>    // For std::vector
+#include "csv.h"     // Include your CSV library header
 
-using namespace date;
-using namespace std::chrono;
+int main(int argc, char *argv[]) {
+    // Check if a filename is provided
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <csv_file>" << std::endl;
+        return 1; // Return error code
+    }
 
-int main(int agc, char *argv[]r) {
-  //Open CSV file and specify columns to read
-  io::CSVReader<4, io::trim_chars<>, io::no_quote_escape<','>> in("./datasets/test.csv");
-  in.read_header(io::ignore_extra_column, "day", "year", "month", "measurement");
+    const char* filename = argv[1];
 
-  int day, year, month; 
-  double measurement;
+    // Create a CSV reader object
+    io::CSVReader<4> reader(filename); // Assuming there are 5 columns, but we'll skip the 4th
+    reader.read_header(io::ignore_extra_column, "day", "year", "month", "measurement"); // Ignoring "ignoreme"
 
-  //Read each row of the CSV file
-  while (in.read_row(day, year, month, measurement)) {
-    //Get the weekday that corresponds to the given date
-    year_month_day ymd{date::year(year), date::month(month), date::day(day)};
-    sys_days date = ymd;
-    weekday wd = date::weekday(date);
-    //Print the date with the corresponding weekday and measurement
-    std::cout << "Date: " << ymd << ", Weekday: " << wd << ", Measurement: " << measurement << std::endl;
-  }
-  return 0;
+    // Define variables for each column
+    int day, year, month;
+    double measurement;
+
+    // Read and print each row
+    while (reader.read_row(day, year, month, measurement)) {
+        std::cout << "Day: " << day << ", Year: " << year << ", Month: " << month << ", Measurement: " << measurement << std::endl;
+    }
+
+    return 0;
 }
+
