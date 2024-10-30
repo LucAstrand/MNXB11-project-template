@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/perf-sanity.dir/perf-sanity.cc.o" -o ../bin/perf-sanity  ../libfmt.a 

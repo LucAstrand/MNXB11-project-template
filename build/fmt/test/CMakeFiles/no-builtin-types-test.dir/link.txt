@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/no-builtin-types-test.dir/no-builtin-types-test.cc.o" "CMakeFiles/no-builtin-types-test.dir/test-main.cc.o" "CMakeFiles/no-builtin-types-test.dir/gtest-extra.cc.o" "CMakeFiles/no-builtin-types-test.dir/util.cc.o" "CMakeFiles/no-builtin-types-test.dir/__/src/os.cc.o" -o ../bin/no-builtin-types-test  gtest/libgtest.a 
