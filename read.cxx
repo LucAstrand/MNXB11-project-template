@@ -10,12 +10,26 @@
 #include <TGraph.h>
 #include <TLegend.h>
 #include <ctime>
+#include <iostream>
+#include <sstream>
+#include <iomanip>
 
 #include <measurement.h>
 
+std::tm parseDate(const std::string& dateStr) {
+    std::tm date = {};
+    std::istringstream ss(dateStr);
+    ss >> std::get_time(&date, "%Y-%m-%d"); // Parse the date string
+    if (ss.fail()) {
+        std::cerr << "Error parsing date: " << dateStr << std::endl;
+    }
+    return date;
+}
 
+void read(const std::string& startDateStr, const std::string& endDateStr) {
+    std::tm startDate = parseDate(startDateStr);
+    std::tm endDate = parseDate(endDateStr);
 
-void read(int startYear, int endYear) {
     // Initialize Measurement branch
     Measurement* m = new Measurement();
     
@@ -38,7 +52,6 @@ void read(int startYear, int endYear) {
     for (Int_t i = 0; i < N; i++) {
         T->GetEntry(i);
         
-        if (m->Gety() >= startYear && m->Gety() <= endYear) {
             std::tm date = {};
             date.tm_year = m->Gety() - 1900;
             date.tm_mon = m->Getm() - 1;
@@ -49,9 +62,14 @@ void read(int startYear, int endYear) {
             
             // Store the date and temperature in the map
             // ADD ANY OTHER MAP YOU PREFR HERE
-            yearlyData[m->Gety()].emplace_back(date, m->Gettemp()); // For yearly average plot
+            if (difftime(mktime(&date), mktime(&startDate)) >= 0 &&
+            difftime(mktime(&date), mktime(&endDate)) <= 0) {
+            
+            // Store the date and temperature in the map
+            yearlyData[m->Gety()].emplace_back(date, m->Gettemp());// For yearly average plot
+        }; 
         }
-    }
+}
 
     
     // Clean up
@@ -59,4 +77,4 @@ void read(int startYear, int endYear) {
     //delete c1;
     //delete m;       // Ensure to free the Measurement object
     //f->Close();     // Close the ROOT file
-}
+
