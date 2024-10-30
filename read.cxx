@@ -1,7 +1,7 @@
 #include <map>
 #include <vector>
-#include <algorithm>  // For std::min_element, std::max_element
-#include <numeric>    // For std::accumulate
+#include <algorithm>
+#include <numeric>
 #include <TH1F.h>
 #include <TFile.h>
 #include <TTree.h>
@@ -9,7 +9,7 @@
 #include <TColor.h>
 #include <TGraph.h>
 #include <TLegend.h>
-#include <ctime>      // For std::tm
+#include <ctime>
 
 #include <measurement.h>
 
@@ -49,7 +49,7 @@ void read(int startYear, int endYear) {
             
             // Store the date and temperature in the map
             // ADD ANY OTHER MAP YOU PREFR HERE
-            yearlyData[m->Gety()].emplace_back(date, m->Gettemp());
+            yearlyData[m->Gety()].emplace_back(date, m->Gettemp()); // For yearly average plot
         }
     }
 
