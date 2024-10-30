@@ -1,3 +1,18 @@
+
+ROOTCFLAGS := $(shell root-config --cflags)
+ROOTLIBS := $(shell root-config --glibs)
+
+# Define targets and rules
+main: main.o
+	g++ main.o -o main $(ROOTLIBS)
+
+main.o: main.cxx
+	g++ -c main.cxx $(ROOTCFLAGS)
+
+# Clean up compiled files
+clean:
+	rm -f main.o main
+
 CXX := g++
 CXXWARNINGS := -Wall -Wextra -Werror -Wno-stringop-truncation
 CXXOPT := -O3
@@ -13,14 +28,4 @@ all: main
 # If you add new source files in the src/ directory, remember to add the
 # corresponding object file as a dependency here so that Make knows that it
 # should build it and link to it
-#
-# Remove the Example object file when you are done looking at it, it doesn't
-# contribute to the executable!
-main: main.cxx src/Example.o
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-src/%.o: src/%.cxx
-	$(CXX) $(CXXFLAGS) $^ -c -o $@
-
-clean:
-	rm -v src/*.o main
