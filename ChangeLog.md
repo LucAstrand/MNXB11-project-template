@@ -2,5 +2,8 @@
 
 
 Add read.cxx: Reading the "Measurement" branch from the tree
+
 Edit read.cxx: Added the mapping of date/time format to the imported tree. The reason is to access the leafs/elements better for plot functions.
 
+
+Edit read.cxx: Added the date parse condition to choose a "yy-mm-dd" format for the read class.
