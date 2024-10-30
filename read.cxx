@@ -1,21 +1,29 @@
-#include <map>
-#include <vector>
-#include <algorithm>
-#include <numeric>
-#include <TH1F.h>
-#include <TFile.h>
-#include <TTree.h>
+#include <measurement.h>
+
+// Date parser includes
+#include <iomanip>
+
+// Plot includes
 #include <TCanvas.h>
 #include <TColor.h>
 #include <TGraph.h>
 #include <TLegend.h>
-#include <TF1.h>
-#include <ctime>
 #include <iostream>
 #include <sstream>
-#include <iomanip>
+#include <TF1.h>
 
-#include <measurement.h>
+// Read file includes
+#include <map>
+#include <vector>
+#include <numeric>
+#include <TH1F.h>
+#include <TFile.h>
+#include <TTree.h>
+
+
+
+
+
 
 
 // Parses the date to "YY-MM-DD" format
