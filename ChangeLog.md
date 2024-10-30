@@ -7,3 +7,5 @@ Edit read.cxx: Added the mapping of date/time format to the imported tree. The r
 
 
 Edit read.cxx: Added the date parse condition to choose a "yy-mm-dd" format for the read class.
+
+Edit read.cxx: Added the average yearly temp plot. The class calculates the average temperature of each year and plot it. On the top of that a fitted line is plotted and the rate of change (slope of the fitted line) is printed
