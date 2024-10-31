@@ -10,7 +10,7 @@
 
 - Added suport for ROOT in makefile.
 
-#2024-10-30
+## 2024-10-30
 
 - Added measurement.h: Header file for measurement class.
 
@@ -28,7 +28,7 @@
 
 
 
-#2024-10-31
+## 2024-10-31
 
 - Added root_micro.C: This micro opens root, compile and load the root scripts used for plotting/analysis
 
