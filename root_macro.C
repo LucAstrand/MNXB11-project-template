@@ -1,4 +1,4 @@
-void root_micro() {
+void root_macro() {
     gSystem->AddIncludePath("-I./include");
 
     gROOT->ProcessLine(".L src/measurement.cxx+");
