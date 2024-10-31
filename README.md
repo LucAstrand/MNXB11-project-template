@@ -1,74 +1,52 @@
-# MNXB11-project-template
-# About
-This folder contains a skeleton for your project that you can use as
-inspiration. Once you get started, do feel free to go ahead and replace this
-README file with one representing your project.
+## Overview
+This project involves the analysis of historical temperature data using ROOT, a data analysis framework commonly used in high-energy physics. The main objectives include reading measurement data from a ROOT file and perform several analysis functions. 
 
-# Directory structure
+## Project Structure
+- **src/**: Contains the main executables written in C++ (`.cxx` files).
+- **include/**: Stores header files (`.h`).
+- **root_macro.C**: The `root_micro.C` script automates the execution of the ROOT functionalities in the project. Specifically, it:
 
-The base directory here contains your "main" file, i.e. the C++ file that you
-will be using as your starting point in your project. The code in this file should ideally be short and just make use of the functionality that you've
-prepared in your other translation units. The majority of your code should be placed in  the two folders where you define your translation units, `src/` and `include/`. 
+  - Adds the necessary include path for header files.
+  - Loads essential C++ files:
+      - measurement.cxx: defines the `Measurement` class, which encapsulates environmental measurement data, including date and time components, temperature, and air quality, with corresponding constructors, destructors, and setter/getter methods.
+      - writeTree.cxx: reads measurement data from a CSV file, parses the date and time, populates a `Measurement` object with this data, and fills a ROOT TTree with the populated measurements for later analysis.
+      - yr_avg_temp.cxx: calculates and plots the average temperature per year within a specified date range by reading measurement data from a ROOT TTree, storing temperatures by year, and performing a linear fit to analyze the rate of change in temperature over time.
+      - runFourier.cxx: reads temperature data from a ROOT TTree, calculates monthly averages, applies a Fast Fourier Transform (FFT) to analyze the frequency components of temperature variations, and visualizes the results by generating a time series graph of temperature.
+  - Executes the following functions:
+      - write(): Loads and processes a dataset specified by a CSV path.
+      - yr_avg_temp(): Computes and outputs the average temperature between two specified dates.
+- **run_project.sh**: The `run_project.sh` script serves as the main automation tool for executing the project. It performs the following tasks:
+  - Input Validation: Checks if a CSV file path is provided as an argument. If not, it displays a usage message and exits.
+  - File Existence Check: Verifies the existence of the specified CSV file. If the file is not found, it outputs an error message and exits.
+  - Running SMHICleaner: Makes the `smhicleaner.sh` script executable to ensure it can run without permission issues.
+  - ROOT Environment Setup: Sources the ROOT environment script to ensure that ROOT commands can be executed correctly.
+  - ROOT Environment Setup: Sources the ROOT environment script to ensure that ROOT commands can be executed correctly.
 
-Do remember to add your include guards to your header files, otherwise the compiler will
-get multiple definitions if you end up loading two source files that include the
-same header.
+## Getting Started
 
-In the template you can find a small translation unit called Example (in [src/Example.cxx](src/Example.cxx) and [include/Example.h](include/Example.h)) that shows some commented reminders of how the syntax for some C++ constructs work. Feel free to use this as a reference to remind yourself of how to do something while working on it but make sure to remove it from your final project version!
+### Prerequisites
+- ROOT (for data analysis and plotting).
+- A compatible C++ compiler (e.g., g++).
+- Bash (for running the automation script).
 
-There is a demonstration of a toy project you can use for inspiration at [EinarElen/MNXB11-project-demo](https://github.com/EinarElen/MNXB11-project-demo). You should not copy code from this repository. There are some intentional bugs hiding in there, see if you can spot them. 
-
-We have also included three special files in the base of the repository 
-- [.gitignore](.gitignore)
-  - This file contains regular expressions that git tells git that it shouldn't add certain file to your repository. 
-  - Your git repository should generally not contain binary files like object files or executables nor should it contain build artefacts like external libraries. 
-- [.clang-format](.clang-format)
-  - This file holds the configuration for the clang-format tool that you can use to format your code consistently 
-  - It is a good idea to keep your code formatted in a consistent manner, especially when working in groups but doing it manually is a waste of your time. Use a tool for it!
+### Installation
+1. Clone this repository:
+  ```bash
+  git clone https://github.com/Adib-Sh/your-repo-name.git
+  cd your-repo-name
   ```
-  # Show what the src/Example.cxx file would look like if formatted
-  clang-format src/Example.cxx 
-  # Carry out the formatting in the file directly 
-  clang-format src/Example.cxx -i
+### Running the project
+- To run the project execute the following bash script in a terminal
+  ```bash
+  ./run_project.sh /path/to/your/csv
   ```
-  - The `.clang-format` file holds the configuration that clang-format will use to determine how to format your code. By default, it will be formatted according to Google's style but you can pick any that you like from https://clang.llvm.org/docs/ClangFormatStyleOptions.html
-- [rootlogon.C](rootlogon.C)
-  - This file contains code that ROOT will execute automatically whenever you start it, a good place to place general style choices you want to make or anything else you always want to run! 
-  - Be careful to not include anything that depends on your particular machine here (e.g. absolute paths)
-# Building the project
 
-The [datasets](datasets) folder contains open data from SMHI and a README.md with further information about it.
+ This script will:
+- Run smhicleaner.sh for the given .csv file.
+- Execute the ROOT macro (`root_macro.C`)
 
-
-We have included a basic Makefile here which should be familiar to you. It follows the same project structure that we have been using in the course. When you add a new translation unit to the project, you have update the dependencies in the Makefile. 
-
-By default, the `all` target will be run which 
-- Compiles any `.cxx` files in the `src/` directory into object files 
-- Compiles `main.cxx` and links with all the object files in `src/`
-
-You can run the `clean` target to remove any object files that have been produced as well as the `main` executable.
-
-## Adding external software libraries
-
-If you want to make use of external software libraries with your project, you
-will always have to tell the tool that builds your project. The Makefile included in this template will pick up any header files in the external/include directory and look for libraries in external/lib and external/lib64 so if you use external as your installation directory, you only need to add the corresponding `-l` flag to the linker.
-
-Here's an illustration of the typical process to add a (CMake based) external library
-``` sh
-# Clone or download the library you want to use 
-git clone https://somerepository.com/alibrary alibrary # The last argument determines what the directory will be called
-
-mkdir build/alibrary -pv # -p will tell mkdir to create the build/ directory if it doesn't already exist 
-# Go into the build directory
-cd build/alibrary 
-# Look up the documentation for the library to find out if there are any additional flags you need for CMake 
-
-# This command tells CMake to configure the build directory based on the source code in the ../../alibrary folder and to install the resulting headers and library files into ../../external
-cmake ../../alibrary -DCMAKE_INSTALL_PREFIX=../../external 
-# Build and install! Use -jN to launch N jobs
-make -j8 install # If you are on an 8-core machine
+#### yr_avg_temp
+- To choose the desire date interval for this function, edit the following line in `root_macro.C`:
+```root_macro.C
+gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
 ```
-
-Make sure to document how to do this for any library you choose to use!
-
-Have fun!
