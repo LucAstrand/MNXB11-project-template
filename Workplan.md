@@ -18,16 +18,18 @@
 ## 3. Task Breakdown
 - **Task List**:
   - [X] Task 1: Create a Root class for TFile generation 
-  - [X] Task 2: _[Description of task 2]_
-  - [X] Task 3: _[Description of task 3]_
-  - _[Add more tasks as needed]_
+  - [X] Task 2: Create a Plot showcasing yearly average temperatures (for a user given range of years), include a fit of the data.
+  - [X] Task 3: Create a Plot showcasing daily average temperatures (for a user given year).
+  - [X] Task 4: Perform a Fourier analysis of the data extracting periodic temperature fluctuations.
+  - [X] Task 5: Create a Plot showcasing extreme (Min and Max) temperature values (for a user given year).
 
 
 ## 4. Roles 
 - **Team Members and Roles**:
   - **Lucas Åstrand** - Developer
-  - **Name 2** - _Role (e.g., Designer)_
-  - **Name 3** - _Role (e.g., Project Manager)_
+  - **Georgios Floros** - Developer
+  - **Keyu Yang** - Developer
+  - **Adib Shaker** - _Role (e.g., Project Manager)_
 
 ---
 
