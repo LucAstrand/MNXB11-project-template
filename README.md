@@ -1,5 +1,5 @@
 ## Overview
-This project is a ROOT-based application designed to [briefly describe the project's purpose, e.g., "analyze data," "simulate particle interactions," etc.]. It includes various components organized to facilitate ease of use and automated execution.
+This project involves the analysis of historical temperature data using ROOT, a data analysis framework commonly used in high-energy physics. The main objectives include reading measurement data from a ROOT file and perform several analysis functions. 
 
 ## Project Structure
 - **src/**: Contains the main executables written in C++ (`.cxx` files).
