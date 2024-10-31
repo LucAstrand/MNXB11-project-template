@@ -36,6 +36,11 @@ This project involves the analysis of historical temperature data using ROOT, a 
   cd your-repo-name
   ```
 ### Running the project
+- Choose your source .csv file and edit the following line in `root_macro.C`:
+  ```root_macro.C
+      gROOT->ProcessLine("write(\"/path/to/your/csv")");
+
+  ```
 - To run the project execute the following bash script in a terminal
   ```bash
   ./run_project.sh /path/to/your/csv

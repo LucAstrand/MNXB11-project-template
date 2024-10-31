@@ -26,4 +26,6 @@
 
 - Removed write.cxx main.cxx Makefile
 
+- Fixed the baredata autofinder in root_macro.C
+
 
