@@ -6,14 +6,14 @@ This project is a ROOT-based application designed to [briefly describe the proje
 - **include/**: Stores header files (`.h`).
 - **root_macro.C**: The `root_micro.C` script automates the execution of the ROOT functionalities in the project. Specifically, it:
 
-- Adds the necessary include path for header files.
-- Loads essential C++ files:
-    - measurement.cxx: [Briefly explain purpose, e.g., processes measurement data].
-    - writeTree.cxx: [Explain purpose, e.g., writes data into a ROOT TTree].
-    - yr_avg_temp.cxx: [Explain purpose, e.g., calculates yearly average temperature].
-- Executes the following functions:
-    - write(): Loads and processes a dataset specified by a CSV path.
-    - yr_avg_temp(): Computes and outputs the average temperature between two specified dates.
+  - Adds the necessary include path for header files.
+  - Loads essential C++ files:
+      - measurement.cxx: [Briefly explain purpose, e.g., processes measurement data].
+      - writeTree.cxx: [Explain purpose, e.g., writes data into a ROOT TTree].
+      - yr_avg_temp.cxx: [Explain purpose, e.g., calculates yearly average temperature].
+  - Executes the following functions:
+      - write(): Loads and processes a dataset specified by a CSV path.
+      - yr_avg_temp(): Computes and outputs the average temperature between two specified dates.
 - **run_project.sh**: The `run_project.sh` script serves as the main automation tool for executing the project. It performs the following tasks:
 - Input Validation: Checks if a CSV file path is provided as an argument. If not, it displays a usage message and exits.
 - File Existence Check: Verifies the existence of the specified CSV file. If the file is not found, it outputs an error message and exits.
