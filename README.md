@@ -45,3 +45,8 @@ This project involves the analysis of historical temperature data using ROOT, a 
 - Run smhicleaner.sh for the given .csv file.
 - Execute the ROOT macro (`root_macro.C`)
 
+#### yr_avg_temp
+- To choose the desire date interval for this function, edit 
+```root_macro.C
+gROOT->ProcessLine("yr_avg_temp(\"1900-01-01\",\"2022-01-01\")");
+```
