@@ -64,4 +64,8 @@
 
 - Added Ourliers.cxx to src/
 
+- Fixed yr_avg_temp() plot legend
 
+- Added outlier.cxx: This sript finds the outliers within the defined time interval 
+
+- Update README
