@@ -83,6 +83,7 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
     }
     
     
+    
 //=======================Yearly Average Plot + Rate of Change=========================
     std::vector<int> years;
     std::vector<double> avgTemps;
