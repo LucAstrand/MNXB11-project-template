@@ -50,3 +50,9 @@ This project involves the analysis of historical temperature data using ROOT, a 
 ```root_macro.C
 gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
 ```
+
+#### given_year_temp
+- To choose the desire year for this function, edit the following line in `root_macro.C`:
+```root_macro.C
+gROOT->ProcessLine("given_year_temp(YYYY)");
+```

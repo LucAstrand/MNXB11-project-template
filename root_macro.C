@@ -29,4 +29,7 @@ void root_macro() {
 
     gROOT->ProcessLine(".L src/yr_avg_temp.cxx+");
     gROOT->ProcessLine("yr_avg_temp(\"1900-01-01\",\"2022-01-01\")");
+
+    gROOT->ProcessLine(".L src/given_year_temp.cxx+");
+    gROOT->ProcessLine("given_year_temp(1998)");
 }
