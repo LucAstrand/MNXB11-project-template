@@ -11,6 +11,7 @@ This project is a ROOT-based application designed to [briefly describe the proje
       - measurement.cxx: defines the `Measurement` class, which encapsulates environmental measurement data, including date and time components, temperature, and air quality, with corresponding constructors, destructors, and setter/getter methods.
       - writeTree.cxx: reads measurement data from a CSV file, parses the date and time, populates a `Measurement` object with this data, and fills a ROOT TTree with the populated measurements for later analysis.
       - yr_avg_temp.cxx: calculates and plots the average temperature per year within a specified date range by reading measurement data from a ROOT TTree, storing temperatures by year, and performing a linear fit to analyze the rate of change in temperature over time.
+      - runFourier.cxx: reads temperature data from a ROOT TTree, calculates monthly averages, applies a Fast Fourier Transform (FFT) to analyze the frequency components of temperature variations, and visualizes the results by generating a time series graph of temperature.
   - Executes the following functions:
       - write(): Loads and processes a dataset specified by a CSV path.
       - yr_avg_temp(): Computes and outputs the average temperature between two specified dates.
