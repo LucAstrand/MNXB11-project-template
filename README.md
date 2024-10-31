@@ -24,7 +24,7 @@ This project is a ROOT-based application designed to [briefly describe the proje
 - To run the project execute the following bash script in a terminal
   ```bash
 . /run_project.sh /path/to/your/csv
- ```
+  ```
 
  This script will:
 - Run smhicleaner.sh for the given .csv file.
