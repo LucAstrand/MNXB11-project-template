@@ -25,4 +25,4 @@ chmod +x smhicleaner.sh
 source /opt/apps/root/bin/thisroot.sh
 
 # Run ROOT macro
-root -b -q root_micro.C
+root -b -q root_macro.C
