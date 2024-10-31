@@ -1,12 +1,12 @@
-#2024-10-25
+## 2024-10-25
 
 - Added date.h: Header file for date parsing library.
 
-#2024-10-27
+## 2024-10-27
 
 - Added csv.h: Header file for csv parsing library.
 
-#2024-10-29
+## 2024-10-29
 
 - Added suport for ROOT in makefile.
 
