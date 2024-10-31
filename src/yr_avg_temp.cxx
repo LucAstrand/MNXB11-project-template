@@ -113,6 +113,8 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
 
     // Draw the graphs on a canvas
     TCanvas* c = new TCanvas("c", Form("Average temperature of each year between %s and %s", startDateStr.c_str(), endDateStr.c_str()), 800, 600);
+    c->SetTitle("Yearly average temperature");
+
     avgGraph->Draw("AP");
 
     // Draw the fit function
@@ -126,7 +128,7 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
 
 
     // Add legend
-    auto legend = new TLegend(0.1, 0.7, 0.3, 0.9);
+    auto legend = new TLegend(0.55, 0.19, 0.76 + 0.2, 0.1 + 0.2);
     legend->AddEntry(avgGraph, "Average Temperature", "p");
     legend->AddEntry(fitFunc, "Linear Fit", "l");
     legend->AddEntry((TObject*)0, oss.str().c_str(), "");
@@ -139,6 +141,6 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
 
     
     // Clean up
-    //delete c;
-    //f->Close();
+    delete c;
+    f->Close();
 }
