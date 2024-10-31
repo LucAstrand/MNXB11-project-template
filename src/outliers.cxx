@@ -14,7 +14,7 @@
 
 #include "../include/measurement.h"
 
-void outlier(int startYear, int endYear) {
+void outliers(int startYear, int endYear) {
     // Initialize Measurement object
     Measurement* m = new Measurement();
     
