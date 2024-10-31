@@ -23,7 +23,7 @@ This project is a ROOT-based application designed to [briefly describe the proje
 ### Running the project
 - To run the project execute the following bash script in a terminal
   ```bash
-. /run_project.sh /path/to/your/csv
+  ./run_project.sh /path/to/your/csv
   ```
 
  This script will:
