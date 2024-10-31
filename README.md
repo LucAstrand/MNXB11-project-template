@@ -9,9 +9,17 @@ This project involves the analysis of historical temperature data using ROOT, a 
   - Adds the necessary include path for header files.
   - Loads essential C++ files:
       - measurement.cxx: defines the `Measurement` class, which encapsulates environmental measurement data, including date and time components, temperature, and air quality, with corresponding constructors, destructors, and setter/getter methods.
+
       - writeTree.cxx: reads measurement data from a CSV file, parses the date and time, populates a `Measurement` object with this data, and fills a ROOT TTree with the populated measurements for later analysis.
+
       - yr_avg_temp.cxx: calculates and plots the average temperature per year within a specified date range by reading measurement data from a ROOT TTree, storing temperatures by year, and performing a linear fit to analyze the rate of change in temperature over time.
+
       - runFourier.cxx: reads temperature data from a ROOT TTree, calculates monthly averages, applies a Fast Fourier Transform (FFT) to analyze the frequency components of temperature variations, and visualizes the results by generating a time series graph of temperature.
+
+      - outlier.cxx: extracts temperature and date information from a ROOT file, and considers only the data within a specified date range. Using the IQR method to determine outliers in the temperature data and writes in a `.txt` file.
+
+
+
   - Executes the following functions:
       - write(): Loads and processes a dataset specified by a CSV path.
       - yr_avg_temp(): Computes and outputs the average temperature between two specified dates.
@@ -49,4 +57,10 @@ This project involves the analysis of historical temperature data using ROOT, a 
 - To choose the desire date interval for this function, edit the following line in `root_macro.C`:
 ```root_macro.C
 gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
+```
+
+#### outlier
+- To choose the desire date interval for this function, edit the following line in `root_macro.C`:
+```root_macro.C
+gROOT->ProcessLine("outlier(YYYY,YYYY)");
 ```
