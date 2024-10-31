@@ -28,4 +28,6 @@
 
 - Fixed the baredata autofinder in root_macro.C
 
+- Fixed yr_avg_temp() plot legend
+
 
