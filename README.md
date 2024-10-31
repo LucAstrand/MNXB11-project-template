@@ -46,7 +46,7 @@ This project involves the analysis of historical temperature data using ROOT, a 
 - Execute the ROOT macro (`root_macro.C`)
 
 #### yr_avg_temp
-- To choose the desire date interval for this function, edit 
+- To choose the desire date interval for this function, edit the following line in `root_macro.C`:
 ```root_macro.C
-gROOT->ProcessLine("yr_avg_temp(\"1900-01-01\",\"2022-01-01\")");
+gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
 ```
