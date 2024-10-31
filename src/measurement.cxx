@@ -1,4 +1,4 @@
-#include <measurement.h>
+#include <../include/measurement.h>
 
 // default constructor - ROOT needs the default one where everything is set to 0
 Measurement::Measurement() :

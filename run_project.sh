@@ -19,7 +19,7 @@ fi
 chmod +x smhicleaner.sh
 
 # Run the smhicleaner script with the CSV file
-.src/smhicleaner.sh "$CSV_FILE"
+./smhicleaner.sh "$CSV_FILE"
 
 # Source ROOT environment (adjust path as needed)
 source /opt/apps/root/bin/thisroot.sh
