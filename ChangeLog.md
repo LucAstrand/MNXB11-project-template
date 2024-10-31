@@ -17,4 +17,6 @@
 - Added run_project: This bash script runs everything needed to be loaded for the project.
 
 - Removed example files from include and src
+- Cleaned up directory: moved all header to include, all .cxx scripts to src and updated root micro
+
 
