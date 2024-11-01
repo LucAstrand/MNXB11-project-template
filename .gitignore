@@ -6,6 +6,7 @@
 *.lo
 *.o
 *.obj
+*.pcm 
 
 # Precompiled Headers
 *.gch
@@ -45,3 +46,5 @@ argumentum*
 
 # Don't add the main executable to git
 main
+external
+build
