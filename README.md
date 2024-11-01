@@ -40,7 +40,7 @@ This project involves the analysis of historical temperature data using ROOT, a 
 ### Installation
 1. Clone this repository:
   ```bash
-  git clone [https://github.com/Adib-Sh/MNXB11-project-template.git]
+  git clone https://github.com/Adib-Sh/MNXB11-project-template.git
   cd your-repo-name
   ```
 
