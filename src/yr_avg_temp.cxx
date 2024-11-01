@@ -1,4 +1,4 @@
-#include <measurement.h>
+#include "include/measurement.h"
 
 // Date parser includes
 #include <iomanip>
@@ -73,19 +73,15 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
             date.tm_min = m->Getmin();
             date.tm_sec = m->Getsec();
             
-            // Store the date and temperature in the map
-            
             if (difftime(mktime(&date), mktime(&startDate)) >= 0 &&
             difftime(mktime(&date), mktime(&endDate)) <= 0) {
-            
-
-
 
             // Store the date and temperature in the map
             // ADD ANY OTHER MAP YOU PREFR HERE
             yearlyTemperatures[m->Gety()].push_back(m->Gettemp());// For yearly average plot
         }; 
     }
+    
     
     
 //=======================Yearly Average Plot + Rate of Change=========================

@@ -10,7 +10,7 @@
 #include <TStyle.h>
 #include <map>
 #include <TPaveText.h>
-#include "measurement.h"
+#include "../include/measurement.h"
 
 struct DailyData {
     double sum;
@@ -98,7 +98,7 @@ void performFourierAnalysis() {
     gStyle->SetPadGridX(true);
     gStyle->SetPadGridY(true);
 
-    const int startYear = 1780;
+    const int startYear = 1860; //1780;
     const int endYear = 2023;
     const int nMonths = ((endYear - startYear + 1) * 12) - 5;
 
