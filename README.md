@@ -4,7 +4,7 @@ This project involves the analysis of historical temperature data using ROOT, a 
 ## Project Structure
 - **src/**: Contains the main executables written in C++ (`.cxx` files).
 - **include/**: Stores header files (`.h`).
-- **root_macro.C**: The `root_micro.C` script automates the execution of the ROOT functionalities in the project. Specifically, it:
+- **root_macro.C**: The `root_macro.C` script automates the execution of the ROOT functionalities in the project. Specifically, it:
 
   - Adds the necessary include path for header files.
   - Loads essential C++ files:
@@ -58,6 +58,7 @@ This project involves the analysis of historical temperature data using ROOT, a 
 ```root_macro.C
 gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
 ```
+The output of this function is a `.png` file saved in the base folder. 
 
 
 #### given_year_temp
