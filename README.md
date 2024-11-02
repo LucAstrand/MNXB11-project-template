@@ -18,6 +18,10 @@ This project involves the analysis of historical temperature data using ROOT, a 
 
       - outlier.cxx: extracts temperature and date information from a ROOT file, and considers only the data within a specified date range. Using the IQR method to determine outliers in the temperature data and writes in a `.txt` file.
 
+      - yr_low_high_temp.cxx: Identifies the highest and lowest temperatures recorded each year, removes anomalies like the year 1957, and plots the temperature extremes to observe long-term trends in climate variability
+
+
+
 
 
   - Executes the following functions:
@@ -103,3 +107,9 @@ The output of this function is a `.pdf` file saved in the base folder.
 gROOT->ProcessLine("outlier(YYYY,YYYY)");
 
 ```
+
+
+#### yr_low_high_temp
+- To choose the desired date range for this function, edit the following line in `root_macro.C`:
+  ```root_macro.C
+  gROOT->ProcessLine("yr_low_high_temp()");

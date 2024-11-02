@@ -36,4 +36,7 @@ void root_macro() {
     gROOT->ProcessLine(".L src/outliers.cxx+");
     //gROOT->ProcessLine("outliers(1800,2022)");
 
+    gROOT->ProcessLine(".L src/yr_low_high_temp.cxx+");
+    gROOT->ProcessLine("generateTemperatureGraph();");
+
 }
