@@ -112,4 +112,4 @@ gROOT->ProcessLine("outlier(YYYY,YYYY)");
 #### yr_low_high_temp
 - To choose the desired date range for this function, edit the following line in `root_macro.C`:
   ```root_macro.C
-  gROOT->ProcessLine("yr_low_high_temp()");
+  gROOT->ProcessLine("generateTemperatureGraph()");
