@@ -67,6 +67,7 @@ The output of this function is a `.png` file saved in the base folder.
 ```root_macro.C
 gROOT->ProcessLine("given_year_temp(YYYY)");
 ```
+The output of this function is a `.pdf` file saved in the base folder. 
 
 
 #### outlier
