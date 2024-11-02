@@ -12,6 +12,8 @@ This project involves the analysis of historical temperature data using ROOT, a 
 
       - writeTree.cxx: reads measurement data from a CSV file, parses the date and time, populates a `Measurement` object with this data, and fills a ROOT TTree with the populated measurements for later analysis.
 
+      - given_year_temp.cxx: reads data from a ROOT TTree, calculates the average daily temperature for each day of a specified year, generates a graph displaying the calculated averages and fits the graph to a cosine function.
+
       - yr_avg_temp.cxx: calculates and plots the average temperature per year within a specified date range by reading measurement data from a ROOT TTree, storing temperatures by year, and performing a linear fit to analyze the rate of change in temperature over time.
 
       - runFourier.cxx: reads temperature data from a ROOT TTree, calculates monthly averages, applies a Fast Fourier Transform (FFT) to analyze the frequency components of temperature variations, and visualizes the results by generating a time series graph of temperature.
@@ -54,13 +56,6 @@ This project involves the analysis of historical temperature data using ROOT, a 
 - Run smhicleaner.sh for the given .csv file.
 - Execute the ROOT macro (`root_macro.C`)
 
-#### yr_avg_temp
-- To choose the desire date interval for this function, edit the following line in `root_macro.C`:
-```root_macro.C
-gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
-```
-The output of this function is a `.png` file saved in the base folder. 
-
 
 #### given_year_temp
 - To choose the desire year for this function, edit the following line in `root_macro.C`:
@@ -68,6 +63,14 @@ The output of this function is a `.png` file saved in the base folder.
 gROOT->ProcessLine("given_year_temp(YYYY)");
 ```
 The output of this function is a `.pdf` file saved in the base folder. 
+
+
+#### yr_avg_temp
+- To choose the desire date interval for this function, edit the following line in `root_macro.C`:
+```root_macro.C
+gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
+```
+The output of this function is a `.png` file saved in the base folder. 
 
 
 #### outlier
