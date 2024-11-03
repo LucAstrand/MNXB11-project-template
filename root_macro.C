@@ -34,6 +34,6 @@ void root_macro() {
     gROOT->ProcessLine("given_year_temp(1998)");
 
     gROOT->ProcessLine(".L src/outliers.cxx+");
-    //gROOT->ProcessLine("outliers(1800,2022)");
+    gROOT->ProcessLine("outliers(1800,2022)");
 
 }
