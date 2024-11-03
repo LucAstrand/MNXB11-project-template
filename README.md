@@ -35,7 +35,8 @@ This project involves the analysis of historical temperature data using ROOT, a 
 ## Getting Started
 
 ### Prerequisites
-- ROOT (for data analysis and plotting).
+- FFTW library
+- ROOT (for data analysis and plotting), the fftw module should be enabled. 
 - A compatible C++ compiler (e.g., g++).
 - Bash (for running the automation script).
 
@@ -43,7 +44,7 @@ This project involves the analysis of historical temperature data using ROOT, a 
 1. Clone this repository:
   ```bash
   git clone https://github.com/Adib-Sh/MNXB11-project-template.git
-  cd your-repo-name
+  cd MNXB11-project-template
   ```
 
 ### Running the project
@@ -71,6 +72,33 @@ The output of this function is a `.pdf` file saved in the base folder.
 gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
 ```
 The output of this function is a `.png` file saved in the base folder. 
+
+#### performFourierAnalysis
+On Cosmos, it is required to work ourside of the mnxb11container, as it lacks the FFTW library. To run the script one must first execute the following commands in bash:
+
+```
+module load "GCC/12.3.0"
+module load "OpenMPI/4.1.5"
+module load "ROOT/6.30.06"
+```
+
+After this, the function can be executed run as follows (assuming no root file is already generated):
+
+```
+./src/smhicleaner.sh <path-to-original-data>
+root 
+.L measurement.cxx
+.L writeTree.cxx
+write('path-to-clean-data') 
+.L runFourier.cxx
+performFourierAnalysis()
+
+```
+
+- The script requires no input variables (it performs the analysis over the full range of the given dataset).
+
+
+The output of this function is a `.pdf` file saved in the base folder.
 
 
 #### outlier
