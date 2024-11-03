@@ -3,6 +3,12 @@
 #include <string>    // For std::string
 #include <vector>    // For std::vector
 #include "csv.h"     // Include your CSV library header
+#include "date.h"
+#include "iso_week.h"
+#include <sstream>
+
+using namespace date;
+using namespace std::chrono;
 
 int main(int argc, char *argv[]) {
     // Check if a filename is provided
@@ -21,9 +27,13 @@ int main(int argc, char *argv[]) {
     int day, year, month;
     double measurement;
 
-    // Read and print each row
-    while (reader.read_row(day, year, month, measurement)) {
-        std::cout << "Day: " << day << ", Year: " << year << ", Month: " << month << ", Measurement: " << measurement << std::endl;
+    // Read each row and print date and measurement with the corresponding weekday
+    while (csv.read_row(day, year, month, measurement)) {
+        // Get the weekday using date library functions
+        year_month_day ymd{date::year{year}, date::month{static_cast<unsigned>(month)}, date::day{static_cast<unsigned>(day)}};
+        sys_days date = ymd;
+        weekday wd = date::weekday(date);
+        std::cout << "Day: " << day << ", Year: " << year << ", Month: " << month << ", Weekday: " << wd << ", Measurement: " << measurement << std::endl;
     }
 
     return 0;
