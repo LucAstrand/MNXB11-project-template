@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>    // For file input
 #include <string>    // For std::string
