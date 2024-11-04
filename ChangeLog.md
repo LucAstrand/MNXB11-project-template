@@ -69,3 +69,10 @@
 - Added outlier.cxx: This sript finds the outliers within the defined time interval 
 
 - Update README
+
+
+## 2024-11-04
+
+- Fixed segmentation break in putlier()
+- Added additional cleanups for .pcm .so .d files
+- Added "output" file path for saved files
