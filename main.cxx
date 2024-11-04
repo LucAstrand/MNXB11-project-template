@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>    // For file input
 #include <string>    // For std::string
@@ -28,13 +27,12 @@ int main(int argc, char *argv[]) {
     int day, year, month;
     double measurement;
 
-    // Read each row and print date with the corresponding weekday
+    // Read each row and print date and measurement with the corresponding weekday
     while (csv.read_row(day, year, month, measurement)) {
-        // Get the weekday
+        // Get the weekday using date library functions
         year_month_day ymd{date::year{year}, date::month{static_cast<unsigned>(month)}, date::day{static_cast<unsigned>(day)}};
         sys_days date = ymd;
         weekday wd = date::weekday(date);
-        // Print the date, the weekday and the corresponding measurement
         std::cout << "Day: " << day << ", Year: " << year << ", Month: " << month << ", Weekday: " << wd << ", Measurement: " << measurement << std::endl;
     }
 
