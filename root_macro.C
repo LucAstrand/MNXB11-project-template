@@ -5,7 +5,7 @@
 #include <TObjString.h>
 
 void root_macro() {
-    printf("Setting include paths and loading initial classes...\n");
+    printf("Setting include paths and loading measurement.cxx and writeTree.cxx\n");
     gSystem->AddIncludePath("-I./include");
 
     gROOT->ProcessLine(".L src/measurement.cxx+");
