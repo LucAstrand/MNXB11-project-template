@@ -89,12 +89,12 @@ void given_year_temp(int year) {
     TF1 *fitFunc = new TF1("fitFunc", "[0] + [1]*cos(2 * TMath::Pi() * x / 365 + [2])", 0, 365);
     fitFunc->SetParameters(10, 1, 0);  // Set initial guesses for amplitude, frequency, phase
     fitFunc->SetLineColor(kRed);
-    gr->Fit(fitFunc);
+    gr->Fit(fitFunc, "RQ");
     fitFunc->Draw("SAME");
     c1->Update();
 
     // Construct the name of the image and save it as a pdf
-    std::string imageName = "Temperatures_of_the_year_" + std::to_string(year) + ".pdf";
+    std::string imageName = "output/Temperatures_of_the_year_" + std::to_string(year) + ".pdf";
     c1->SaveAs(imageName.c_str());
 
     // Clean up
