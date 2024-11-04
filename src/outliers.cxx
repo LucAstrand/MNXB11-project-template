@@ -15,6 +15,7 @@
 #include "../include/measurement.h"
 
 void outliers(int startYear, int endYear) {
+    printf("i was found");
     // Initialize Measurement object
     Measurement* m = new Measurement();
     
@@ -83,7 +84,7 @@ void outliers(int startYear, int endYear) {
 
 
     // Print outlier information with date and write to a text file
-    std::ofstream outFile("../outliers.txt");
+    std::ofstream outFile("outliers.txt");
     if (outFile.is_open()) {
         outFile << "Outlier Temperatures from " << startYear << " to " << endYear << ":\n";
         for (const auto& outlier : outliers) {

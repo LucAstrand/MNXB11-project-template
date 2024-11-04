@@ -100,4 +100,5 @@ void given_year_temp(int year) {
     // Clean up
     f->Close();
     delete m;
+    delete f;
 }

@@ -137,6 +137,12 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
 
     
     // Clean up
-    delete c;
+    delete avgGraph;
+    delete fitFunc;
+    delete legend;
     f->Close();
+    delete c;
+    delete m;
+    delete f;
+    
 }
