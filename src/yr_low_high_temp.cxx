@@ -7,6 +7,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include "../include/measurement.h"
 
 void generateTemperatureGraph() {
     // Open the ROOT file generated from writeTree.cxx
@@ -17,17 +18,14 @@ void generateTemperatureGraph() {
     }
 
     // Get the TTree from the file
-    TTree *tree = (TTree*)file->Get("MeasurementTree");
+    TTree *tree = (TTree*)file->Get("tree");
     if (!tree) {
         std::cerr << "Error: TTree not found!" << std::endl;
         return;
     }
 
-    // Set up variables to hold data
-    int year;
-    double temp;
-    tree->SetBranchAddress("year", &year);
-    tree->SetBranchAddress("temp", &temp);
+    Measurement* m = new Measurement();
+    tree->SetBranchAddress("Measurement", &m);
 
     // Use maps to store min and max temperatures by year
     std::map<int, double> minTemp, maxTemp;
@@ -43,6 +41,8 @@ void generateTemperatureGraph() {
     Long64_t nEntries = tree->GetEntries();
     for (Long64_t i = 0; i < nEntries; ++i) {
         tree->GetEntry(i);
+        int year = m->Gety();
+        int temp = m->Gettemp();
         if (year == 1957) continue; // Skip year 1957
         if (temp < minTemp[year]) minTemp[year] = temp;
         if (temp > maxTemp[year]) maxTemp[year] = temp;
@@ -72,28 +72,39 @@ void generateTemperatureGraph() {
     TGraph *graphHigh = new TGraph(n, yearArray, highTempArray);
 
     // Customize graphs
-    graphLow->SetMarkerStyle(20);
+    graphLow->SetMarkerStyle(21);      // Different marker style
     graphLow->SetMarkerColor(kBlue);
     graphHigh->SetMarkerStyle(20);
     graphHigh->SetMarkerColor(kRed);
 
+    // Set the y-axis range
+    graphHigh->SetMinimum(-50);  
+    graphHigh->SetMaximum(50); 
+
     // Create canvas and draw
     TCanvas *canvas = new TCanvas("canvas", "Yearly Temperature Extremes", 800, 600);
-    graphHigh->Draw("AP");
-    graphLow->Draw("P SAME");
 
-    // Add axis labels and legend
-    graphHigh->GetXaxis()->SetTitle("Year");
-    graphHigh->GetYaxis()->SetTitle("Temperature (°C)");
+    // Draw the high temperature graph first, setting up the axis
+    graphHigh->SetTitle("Yearly Temperature Extremes;Year;Temperature (°C)");
+    graphHigh->Draw("ALP"); 
+
+    // Draw the low temperature graph on the same plot
+    graphLow->Draw("LP SAME"); 
+
+    // Add a legend
     TLegend *legend = new TLegend(0.1, 0.7, 0.3, 0.9);
     legend->AddEntry(graphLow, "Lowest Temperature", "p");
     legend->AddEntry(graphHigh, "Highest Temperature", "p");
     legend->Draw();
 
+    // Update canvas to display everything
+    canvas->Update();
+
     // Save the graph as an image
-    canvas->SaveAs("Yearly_Temperature_Extremes.png");
+    canvas->SaveAs("output/Yearly_Temperature_Extremes.png");
 
     // Clean up
+    delete m;
     delete[] yearArray; // Free the allocated memory
     delete canvas;
     file->Close();
