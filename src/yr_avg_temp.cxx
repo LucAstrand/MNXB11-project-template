@@ -105,7 +105,7 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
     
     // Create a linear fit function
     TF1* fitFunc = new TF1("fitFunc", "pol1", years.front(), years.back());
-    avgGraph->Fit(fitFunc, "R");
+    avgGraph->Fit(fitFunc, "RQ");
 
     // Draw the graphs on a canvas
     TCanvas* c = new TCanvas("c", Form("Average temperature of each year between %s and %s", startDateStr.c_str(), endDateStr.c_str()), 800, 600);
@@ -132,7 +132,7 @@ void yr_avg_temp(const std::string& startDateStr, const std::string& endDateStr)
 
 
     c->Update();
-    c->SaveAs("yearly_average_temperature.png");
+    c->SaveAs("output/yearly_average_temperature.png");
 //=======================Next=========================
 
     

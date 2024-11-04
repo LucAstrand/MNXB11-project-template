@@ -12,15 +12,14 @@
 #include <TLegend.h>
 #include <TGraph.h>
 
-#include "../include/measurement.h"
+#include "include/measurement.h"
 
 void outliers(int startYear, int endYear) {
-    printf("i was found");
     // Initialize Measurement object
     Measurement* m = new Measurement();
     
     // Open the ROOT file
-    auto f = TFile::Open("../measurement_file.root");
+    auto f = TFile::Open("measurement_file.root");
 
     
     // Get the TTree from the file
@@ -84,7 +83,7 @@ void outliers(int startYear, int endYear) {
 
 
     // Print outlier information with date and write to a text file
-    std::ofstream outFile("outliers.txt");
+    std::ofstream outFile("output/outliers.txt");
     if (outFile.is_open()) {
         outFile << "Outlier Temperatures from " << startYear << " to " << endYear << ":\n";
         for (const auto& outlier : outliers) {
@@ -92,7 +91,7 @@ void outliers(int startYear, int endYear) {
             outFile << std::put_time(&outlier.second, "%Y-%m-%d") << ": " << outlier.first << " C\n";
         }
         outFile.close();
-        std::cout << "Outlier data written to outliers.txt\n";
+        std::cout << "Outlier data written to output/outliers.txt\n";
     } else {
         std::cerr << "Failed to open outliers.txt for writing.\n";
     }

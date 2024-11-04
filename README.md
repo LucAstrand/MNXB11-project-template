@@ -75,7 +75,7 @@ The output of this function is a `.pdf` file saved in the base folder.
 ```root_macro.C
 gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
 ```
-The output of this function is a `.png` file saved in the base folder. 
+The output of this function is a `.png` file saved in the `/output` folder.
 
 #### performFourierAnalysis
 On Cosmos, it is required to work ourside of the mnxb11container, as it lacks the FFTW library. To run the script one must first execute the following commands in bash:
@@ -102,7 +102,7 @@ performFourierAnalysis()
 - The script requires no input variables (it performs the analysis over the full range of the given dataset).
 
 
-The output of this function is a `.pdf` file saved in the base folder.
+The output of this function is a `.pdf` file saved in the `/output` folder.
 
 
 #### outlier
@@ -111,6 +111,7 @@ The output of this function is a `.pdf` file saved in the base folder.
 gROOT->ProcessLine("outlier(YYYY,YYYY)");
 
 ```
+The output of this function is a `.txt` file saved in the `/output` folder.
 
 
 #### yr_low_high_temp
