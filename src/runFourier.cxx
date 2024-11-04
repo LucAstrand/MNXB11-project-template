@@ -52,7 +52,7 @@ void readDataAndFillHistogram(const char* filename, TH1D* hist) {
         tree->GetEntry(i);
         int year = m->Gety();
         int month = m->Getm();
-        int day = m->Getd(); // Assuming there's a Getd() method for day
+        int day = m->Getd(); 
         int dailyKey = year * 10000 + month * 100 + day;
 
         dailyTemp[dailyKey].sum += m->Gettemp();
@@ -161,7 +161,6 @@ void performFourierAnalysis() {
     fftGraph->GetYaxis()->SetTitle("Magnitude");
     gPad->SetLogx(true);
     
-    // Set reasonable x-axis range (from 1 month to 50 years)
     fftGraph->GetXaxis()->SetRangeUser(1.0 / 12.0, 50);
 
     // Add explanation text
