@@ -24,5 +24,21 @@ chmod +x smhicleaner.sh
 # Source ROOT environment (adjust path as needed)
 source /opt/apps/root/bin/thisroot.sh
 
+# Create the output directory if it doesn't exist
+OUTPUT_DIR="output"
+if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir "$OUTPUT_DIR"
+    echo "Created output directory: $OUTPUT_DIR"
+fi
+
 # Run ROOT macro
 root -b -q root_macro.C
+
+# Clean up CSV and ROOT files
+echo "Cleaning up files..."
+rm -f *.csv *.root
+rm -f src/*.d src/*.so src/*.pcm
+
+
+echo "Cleanup complete."
+
