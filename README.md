@@ -35,7 +35,14 @@ The repository contains folders and files related to this project
 
 #### `AUTHORS`
 
+- Georgios Floros <ge1554fl-s@student.lu.se>
+- Adib Shaker <ad6224sh@lu.se>
+- Lucas Åstrand <lu3626as@lu.se>
+- Keyu Yang <stacyyamg@gmail.com>
+
 #### `LICENSE`
+
+- GNU GENERAL PUBLIC LICENSE
 
 #### `Makefile`
 - Defines the build process:
@@ -73,3 +80,70 @@ The repository contains folders and files related to this project
    ```bash
       ./main
    ```
+## Libraries Overview
+- Lyra 
+- Fast C++ CSV Parsing 
+- Date 
+- fmt 
+
+## Header only libraries
+
+- For the header only libraries Lyra, Fast C++ CSV Parsing and Date, the installation procedure is as follows:
+
+1. Lyra:
+
+```bash
+git clone https://github.com/bfgroup/Lyra.git
+cp Lyra/include/lyra/lyra.hpp include/
+
+```
+2. Fast C++ CSV Parsing
+
+```bash
+git clone https://github.com/ben-strasser/fast-cpp-csv-parser.git
+cp fast-cpp-csv-parser/csv.h include/
+
+```
+3. Date
+
+```bash
+git clone https://github.com/HowardHinnant/date.git
+cp -r date/include/date include/
+
+```
+Note: This will include all the header files from the date library. For this project, use:
+
+```bash
+cp date/include/date.h include/
+cp date/include/iso_week.h include/
+
+```
+## Compiled library
+
+- The fmt library requires compilation. Follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/fmtlib/fmt.git
+
+```
+
+2. Build fmt with CMake:
+
+```bash
+cd fmt
+mkdir build
+cd build
+cmake ..
+make
+
+```
+
+3. Move the compiled library files and headers to `dependencies/`and `include/`:
+
+```bash
+cp -r ../include/fmt include/
+cp build/libfmt.a dependencies/
+
+```
