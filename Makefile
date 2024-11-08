@@ -2,9 +2,9 @@ CXX := g++
 CXXWARNINGS := -Wall -Wextra -Werror -Wno-stringop-truncation
 CXXOPT := -O3
 CXXSTD := -std=c++17
-INCLUDES := -I include -I external/include -I /opt/apps/root/include -I dependencies/Lyra/include
+INCLUDES := -I include -I external/include -I /opt/apps/root/include -I dependencies
 CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES)
-LDFLAGS := -L/opt/apps/root/lib -lGui -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -lROOTDataFrame -Wl,-rpath,/opt/apps/root/lib -pthread -lm -ldl -rdynamic -L external/lib64 -lfmt
+LDFLAGS := -L/opt/apps/root/lib -lGui -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -lROOTDataFrame -Wl,-rpath,/opt/apps/root/lib -pthread -lm -ldl -rdynamic -L dependencies/lib64 -lfmt
 
 .PHONY: all clean
 
