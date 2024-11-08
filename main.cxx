@@ -6,6 +6,8 @@
 #include "date.h"
 #include "iso_week.h"
 #include <sstream>
+#include <lyra/lyra.hpp>
+
 
 using namespace date;
 using namespace std::chrono;
@@ -26,6 +28,19 @@ int main(int argc, char *argv[]) {
     // Define variables for each column
     int day, year, month;
     double measurement;
+
+    bool verbose = false;
+    lyra::cli cli;
+
+    cli.add_argument(lyra::arg(verbose, "verbose").help("Enable output"));
+    lyra::args args(argc, argv);
+
+    // Parse the arguments
+    auto result = cli.parse(args);
+    if (!result) {
+        std::cerr << "Error: " << result.message() << std::endl;
+        return 1;
+    }
 
     // Read each row and print date and measurement with the corresponding weekday
     while (csv.read_row(day, year, month, measurement)) {

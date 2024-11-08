@@ -1,74 +1,149 @@
-# MNXB11-project-template
-# About
-This folder contains a skeleton for your project that you can use as
-inspiration. Once you get started, do feel free to go ahead and replace this
-README file with one representing your project.
+# MNXB11 Project Template - Homework 7
 
-# Directory structure
+## Project Overview
 
-The base directory here contains your "main" file, i.e. the C++ file that you
-will be using as your starting point in your project. The code in this file should ideally be short and just make use of the functionality that you've
-prepared in your other translation units. The majority of your code should be placed in  the two folders where you define your translation units, `src/` and `include/`. 
+The repository contains folders and files related to this project
 
-Do remember to add your include guards to your header files, otherwise the compiler will
-get multiple definitions if you end up loading two source files that include the
-same header.
+### Folders
 
-In the template you can find a small translation unit called Example (in [src/Example.cxx](src/Example.cxx) and [include/Example.h](include/Example.h)) that shows some commented reminders of how the syntax for some C++ constructs work. Feel free to use this as a reference to remind yourself of how to do something while working on it but make sure to remove it from your final project version!
+#### `datasets/`
+- Contains data files used in the project
 
-There is a demonstration of a toy project you can use for inspiration at [EinarElen/MNXB11-project-demo](https://github.com/EinarElen/MNXB11-project-demo). You should not copy code from this repository. There are some intentional bugs hiding in there, see if you can spot them. 
+#### `dependencies/`
+- External libraries required for the project, such as:
+  - **Lyra**: A command-line argument parsing library.
+  - **fmt**: A modern formatting library for C++.
 
-We have also included three special files in the base of the repository 
-- [.gitignore](.gitignore)
-  - This file contains regular expressions that git tells git that it shouldn't add certain file to your repository. 
-  - Your git repository should generally not contain binary files like object files or executables nor should it contain build artefacts like external libraries. 
-- [.clang-format](.clang-format)
-  - This file holds the configuration for the clang-format tool that you can use to format your code consistently 
-  - It is a good idea to keep your code formatted in a consistent manner, especially when working in groups but doing it manually is a waste of your time. Use a tool for it!
-  ```
-  # Show what the src/Example.cxx file would look like if formatted
-  clang-format src/Example.cxx 
-  # Carry out the formatting in the file directly 
-  clang-format src/Example.cxx -i
-  ```
-  - The `.clang-format` file holds the configuration that clang-format will use to determine how to format your code. By default, it will be formatted according to Google's style but you can pick any that you like from https://clang.llvm.org/docs/ClangFormatStyleOptions.html
-- [rootlogon.C](rootlogon.C)
-  - This file contains code that ROOT will execute automatically whenever you start it, a good place to place general style choices you want to make or anything else you always want to run! 
-  - Be careful to not include anything that depends on your particular machine here (e.g. absolute paths)
-# Building the project
+#### `include/`
+- Header files such as:
+  - **csv.h**: Utilities for handling CSV files.
+  - **date.h**: Utilities for handling date
+  - **fmt**: Header files from the fmt library.
 
-The [datasets](datasets) folder contains open data from SMHI and a README.md with further information about it.
+#### `src/`
+- Source code files
+
+---
+
+### Key Files
+
+#### `.clang-format`
+- Configuration for automated code
+
+#### `.gitignore`
+- Specifies files and directories to be ignored by Git.
+
+#### `AUTHORS`
+
+- Georgios Floros <ge1554fl-s@student.lu.se>
+- Adib Shaker <ad6224sh@lu.se>
+- Lucas Åstrand <lu3626as@lu.se>
+- Keyu Yang <stacyyamg@gmail.com>
+
+#### `LICENSE`
+
+- GNU GENERAL PUBLIC LICENSE
+
+#### `Makefile`
+- Defines the build process:
+  - `make`: Builds the project.
+  - `make clean`: Removes generated files.
 
 
-We have included a basic Makefile here which should be familiar to you. It follows the same project structure that we have been using in the course. When you add a new translation unit to the project, you have update the dependencies in the Makefile. 
+#### `main.cxx`
+- The main program file where the logic of the project is implemented.
 
-By default, the `all` target will be run which 
-- Compiles any `.cxx` files in the `src/` directory into object files 
-- Compiles `main.cxx` and links with all the object files in `src/`
 
-You can run the `clean` target to remove any object files that have been produced as well as the `main` executable.
+---
 
-## Adding external software libraries
+## Build Instructions
 
-If you want to make use of external software libraries with your project, you
-will always have to tell the tool that builds your project. The Makefile included in this template will pick up any header files in the external/include directory and look for libraries in external/lib and external/lib64 so if you use external as your installation directory, you only need to add the corresponding `-l` flag to the linker.
+### Prerequisites
 
-Here's an illustration of the typical process to add a (CMake based) external library
-``` sh
-# Clone or download the library you want to use 
-git clone https://somerepository.com/alibrary alibrary # The last argument determines what the directory will be called
+- A C++17 compliant compiler (e.g., GCC or Clang).
+- [ROOT](https://root.cern.ch) framework installed.
 
-mkdir build/alibrary -pv # -p will tell mkdir to create the build/ directory if it doesn't already exist 
-# Go into the build directory
-cd build/alibrary 
-# Look up the documentation for the library to find out if there are any additional flags you need for CMake 
+### Build Steps
 
-# This command tells CMake to configure the build directory based on the source code in the ../../alibrary folder and to install the resulting headers and library files into ../../external
-cmake ../../alibrary -DCMAKE_INSTALL_PREFIX=../../external 
-# Build and install! Use -jN to launch N jobs
-make -j8 install # If you are on an 8-core machine
+1. Clone the repository:
+   ```bash
+      git clone https://github.com/Adib-Sh/MNXB11-project-template.git
+      cd MNXB11-project-template-homework7
+   ```
+
+2. Build the project:
+   ```bash
+      make
+   ```
+
+3. Run the main program:
+   ```bash
+      ./main
+   ```
+## Libraries Overview
+- Lyra 
+- Fast C++ CSV Parsing 
+- Date 
+- fmt 
+
+## Header only libraries
+
+- For the header only libraries Lyra, Fast C++ CSV Parsing and Date, the installation procedure is as follows:
+
+1. Lyra:
+
+```bash
+git clone https://github.com/bfgroup/Lyra.git
+cp Lyra/include/lyra/lyra.hpp include/
+
+```
+2. Fast C++ CSV Parsing
+
+```bash
+git clone https://github.com/ben-strasser/fast-cpp-csv-parser.git
+cp fast-cpp-csv-parser/csv.h include/
+
+```
+3. Date
+
+```bash
+git clone https://github.com/HowardHinnant/date.git
+cp -r date/include/date include/
+
+```
+Note: This will include all the header files from the date library. For this project, use:
+
+```bash
+cp date/include/date.h include/
+cp date/include/iso_week.h include/
+
+```
+## Compiled library
+
+- The fmt library requires compilation. Follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/fmtlib/fmt.git
+
 ```
 
-Make sure to document how to do this for any library you choose to use!
+2. Build fmt with CMake:
 
-Have fun!
+```bash
+cd fmt
+mkdir build
+cd build
+cmake ..
+make
+
+```
+
+3. Move the compiled library files and headers to `dependencies/`and `include/`:
+
+```bash
+cp -r ../include/fmt include/
+cp build/libfmt.a dependencies/
+
+```
