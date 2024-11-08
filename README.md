@@ -17,7 +17,8 @@ The repository contains folders and files related to this project
 #### `include/`
 - Header files such as:
   - **csv.h**: Utilities for handling CSV files.
-  - **fmt/**: Header files from the fmt library.
+  - **date.h**: Utilities for handling date
+  - **fmt**: Header files from the fmt library.
 
 #### `src/`
 - Source code files
