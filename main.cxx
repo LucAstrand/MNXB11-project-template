@@ -33,9 +33,10 @@ int main(int argc, char *argv[]) {
     lyra::cli cli;
 
     cli.add_argument(lyra::arg(verbose, "verbose").help("Enable verbose output"));
+    lyra::args args(argc, argv);
 
     // Parse the arguments
-    auto result = cli.parse(argc, argv);
+    auto result = cli.parse(args);
     if (!result) {
         std::cerr << "Error: " << result.message() << std::endl;
         return 1;
