@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     bool verbose = false;
     lyra::cli cli;
 
-    cli.add_argument(lyra::arg(verbose, "verbose").help("Enable verbose output"));
+    cli.add_argument(lyra::arg(verbose, "verbose").help("Enable output"));
     lyra::args args(argc, argv);
 
     // Parse the arguments
