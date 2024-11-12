@@ -178,7 +178,7 @@ void performFourierAnalysis() {
     pt->Draw();
 
     canvas->Update();
-    canvas->SaveAs("fourier_analysis.pdf");
+    canvas->SaveAs("output/fourier_analysis.pdf");
 
     // Clean up
     delete tempHist;

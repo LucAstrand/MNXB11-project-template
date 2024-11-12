@@ -52,6 +52,8 @@ This project involves the analysis of historical temperature data using ROOT, a 
   ```
 
 ### Running the project
+Note: This excludes the Fourier analysis portion.
+
 - To run the project execute the following bash script in a terminal
   ```bash
   ./run_project.sh /path/to/your/csv
@@ -60,6 +62,15 @@ This project involves the analysis of historical temperature data using ROOT, a 
  This script will:
 - Run smhicleaner.sh for the given .csv file.
 - Execute the ROOT macro (`root_macro.C`)
+
+### Running the project with the Fourier analysis
+- Since the *mnxb11container*, lacks the FFTW system library, we include a separate `run_project_ROOT_FFTW.sh` script, making use of the modules present on the Cosmos cluster. To run this version of the project, execute the following bash script in a terminal (outside of the *mnxb11container*):
+  ```bash
+  ./run_project_ROOT_FFTW.sh /path/to/your/csv
+  ```
+ This script will:
+- Run smhicleaner.sh for the given .csv file.
+- Execute the ROOT macro (`root_macro_FFTW.C`)
 
 
 #### given_year_temp
@@ -78,29 +89,8 @@ gROOT->ProcessLine("yr_avg_temp(\"YYYY-MM-DD\",\"YYYY-MM-DD\")");
 The output of this function is a `.png` file saved in the `/output` folder.
 
 #### performFourierAnalysis
-On Cosmos, it is required to work ourside of the mnxb11container, as it lacks the FFTW library. To run the script one must first execute the following commands in bash:
-
-```
-module load "GCC/12.3.0"
-module load "OpenMPI/4.1.5"
-module load "ROOT/6.30.06"
-```
-
-After this, the function can be executed run as follows (assuming no root file is already generated):
-
-```
-./src/smhicleaner.sh <path-to-original-data>
-root 
-.L measurement.cxx
-.L writeTree.cxx
-write('path-to-clean-data') 
-.L runFourier.cxx
-performFourierAnalysis()
-
-```
 
 - The script requires no input variables (it performs the analysis over the full range of the given dataset).
-
 
 The output of this function is a `.pdf` file saved in the `/output` folder.
 
